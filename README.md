@@ -16,21 +16,34 @@ We need an OrderItems table so each order can generate multiple rows in this tab
 
 6. Use forms created in 4 and 5 to insert Customers and Orders.  Add customers that have not made any orders. Make the number of entries relatively small.  Why?  
 
-
-
-
+We keep it small so you can check your results by hand. The products table is so big you cant check them by hand. 
 7. Use SQL DML to INSERT records into Customers and Orders (and OrderItems).  
 
 INSERT INTO `unemath_Cote`.`Customers` (`customer_id`, `first_name`, `last_name`, `address`, `zip_code`, `email`) VALUES ('910357861', 'Olivia', 'Finnerman', '74 Hillside Way', '01913', 'Ofinnerman99@gmail.com');
 
 INSERT INTO `unemath_Cote`.`Customers` (`customer_id`, `first_name`, `last_name`, `address`, `zip_code`, `email`) VALUES ('910357863', 'Thomas', 'Tilton', '21 High Street', '04106', 'tttilton@yahoo.com');
 
+Insert Into `unemath_Cote`.`Customers` Values ('910357888','James','Smith', '30 Oaks Drive', '03877','jsmith@une.edu');
+
+Insert Into `unemath_Cote`.`Orders` Values ('1022','910357888','2016-11-11')
+
+Insert Into `unemath_Cote`.`Orders` Values ('1023','910357863','2016-11-14')
+
+INSERT INTO `unemath_Cote`.`OrderItems` (`order_id`, `product_id`, `quantity`) VALUES ('1027', '1001', '1');
+
+INSERT INTO `unemath_Cote`.`OrderItems` (`order_id`, `product_id`, `quantity`) VALUES ('1027', '1007', '3');
+
 8. Find all customer orders.
 
 SELECT * FROM unemath_Cote.Orders;
+
+Select Customers.customer_id, Customers.first_name, Customers.last_name, Orders.order_id from unemath_Cote.Customers inner join
+unemath_Cote.Orders on Customers.customer_id = Orders.customer_id;
 
 9. Select all customers that orders a certain product (This will depend on what data you entered into the table).  Find all customers that ordered product 3452.  
 
 SELECT * from unemath_Cote.Products where product_id=3452;
 
 10. List 5 questions that you can answer from this data.
+
+Which customer ordered prod
