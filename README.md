@@ -18,6 +18,9 @@ We need an OrderItems table so each order can generate multiple rows in this tab
 
 INSERT INTO `unemath_Cote`.`Customers` (`customer_id`, `first_name`, `last_name`, `address`, `zip_code`, `email`) VALUES ('910357861', 'Olivia', 'Finnerman', '74 Hillside Way', '01913', 'Ofinnerman99@gmail.com');
 
+INSERT INTO `unemath_Cote`.`Customers` (`customer_id`, `first_name`, `last_name`, `address`, `zip_code`, `email`) VALUES ('910357863', 'Thomas', 'Tilton', '21 High Street', '04106', 'tttilton@yahoo.com');
+
+
 
 
 
