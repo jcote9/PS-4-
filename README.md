@@ -16,6 +16,11 @@ We need an OrderItems table so each order can generate multiple rows in this tab
 
 6. Use forms created in 4 and 5 to insert Customers and Orders.  Add customers that have not made any orders. Make the number of entries relatively small.  Why?  
 
+INSERT INTO `unemath_Cote`.`Customers` (`customer_id`, `first_name`, `last_name`, `address`, `zip_code`, `email`) VALUES ('910357861', 'Olivia', 'Finnerman', '74 Hillside Way', '01913', 'Ofinnerman99@gmail.com');
+
+
+
+
 7. Use SQL DML to INSERT records into Customers and Orders (and OrderItems).  
 
 8. Find all customer orders.
