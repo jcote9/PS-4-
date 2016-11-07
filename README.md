@@ -6,6 +6,8 @@
 
 2. Why do we need an OrderItems table?
 
+We need an OrderItems table so each order can generate multiple rows in this table. Each item ordered is a product from the inventory, so each row has a product_id, which is linked to the products table. 
+
 3. Create linked tables in MS Access.
 
 4. Create forms to enter customer data.
