@@ -77,12 +77,14 @@ unemath_Cote.Orders on Customers.customer_id = Orders.customer_id;
 
 SELECT * from unemath_Cote.Products where product_id=3452;
 
+Select Customers.customer_id, Customers.first_name, Customers.last_name, OrderItems.product_id from unemath_Cote.Customers inner join unemath_Cote.OrderItems where product_id=1001;
+
 10. List 5 questions that you can answer from this data.
 
 Which customer ordered two different orders?
 Which product was ordered on November 14th, 2016?
 How many total orders were made?
 How many customers made orders on November 6th?
-Which customer ordered a product whos product id is 1001? 
+Which customer ordered a product whos product id is 1007? 
 
 
