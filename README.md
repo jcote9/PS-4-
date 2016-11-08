@@ -4,6 +4,37 @@
 
 1. Create three tables: Customers, Orders, and OrderItems.
 
+CREATE TABLE `Customers` (
+  `customer_id` int(11) NOT NULL,
+  `first_name` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `last_name` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `address` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `zip_code` char(5) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`customer_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+CREATE TABLE `Orders` (
+  `order_id` int(11) NOT NULL AUTO_INCREMENT,
+  `customer_id` int(11) NOT NULL,
+  `date` date NOT NULL,
+  PRIMARY KEY (`order_id`),
+  KEY `customer_id_idx` (`customer_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1029 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+CREATE TABLE `OrderItems` (
+  `orderitem_id` int(11) NOT NULL AUTO_INCREMENT,
+  `order_id` int(11) DEFAULT NULL,
+  `product_id` int(11) DEFAULT NULL,
+  `quantity` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`orderitem_id`),
+  KEY `order_id_idx` (`order_id`),
+  KEY `product_id_idx` (`product_id`),
+  CONSTRAINT `order_id` FOREIGN KEY (`order_id`) REFERENCES `Orders` (`order_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `product_id` FOREIGN KEY (`product_id`) REFERENCES `Products` (`product_id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
 2. Why do we need an OrderItems table?
 
 We need an OrderItems table so each order can generate multiple rows in this table. Each item ordered is a product from the inventory, so each row has a product_id, which is linked to the products table. 
@@ -16,7 +47,8 @@ We need an OrderItems table so each order can generate multiple rows in this tab
 
 6. Use forms created in 4 and 5 to insert Customers and Orders.  Add customers that have not made any orders. Make the number of entries relatively small.  Why?  
 
-We keep it small so you can check your results by hand. The products table is so big you cant check them by hand. 
+We keep it small so you can check your results by hand. The products table is so big you cant check them by hand. Keeping the number of entries small allows us to better understand sql, and search for possible problems and fixes.
+
 7. Use SQL DML to INSERT records into Customers and Orders (and OrderItems).  
 
 INSERT INTO `unemath_Cote`.`Customers` (`customer_id`, `first_name`, `last_name`, `address`, `zip_code`, `email`) VALUES ('910357861', 'Olivia', 'Finnerman', '74 Hillside Way', '01913', 'Ofinnerman99@gmail.com');
@@ -33,6 +65,7 @@ INSERT INTO `unemath_Cote`.`OrderItems` (`order_id`, `product_id`, `quantity`) V
 
 INSERT INTO `unemath_Cote`.`OrderItems` (`order_id`, `product_id`, `quantity`) VALUES ('1027', '1007', '3');
 
+INSERT INTO `unemath_Cote`.`OrderItems` (`order_id`, `product_id`, `quantity`) VALUES ('1027', '1004', '1');
 8. Find all customer orders.
 
 SELECT * FROM unemath_Cote.Orders;
@@ -46,4 +79,10 @@ SELECT * from unemath_Cote.Products where product_id=3452;
 
 10. List 5 questions that you can answer from this data.
 
-Which customer ordered prod
+Which customer ordered two different orders?
+Which product was ordered on November 14th, 2016?
+How many total orders were made?
+How many customers made orders on November 6th?
+Which customer ordered a product whos product id is 1001? 
+
+
